@@ -15,17 +15,18 @@ export const renderFooter =()=>{
     
 export const renderMovies = (movies) => {
     const main = document.getElementById('movie-list');
-    if (!movies.length) {
+    if (!movies || !movies.length) {
         main.innerHTML = `<p>No movies found.</p>`;
         return;
     }
-
-    const cards = movies.map((movie) => `
+    const cards = movies.map(function(movie) { 
+        return`
         <div class="movie-card">
-            <h4>${movie.title}</h4>
+          <img src="${movie.backdrop_path }" alt="${movie.original_title}">
+            <h4>${movie. original_title}</h4>
             <p>Rating: ${movie.vote_average}</p>
         </div>
-    `).join('');
+    `;}).join('');
     
     main.innerHTML = `<div class="movie-grid">${cards}</div>`;
 };

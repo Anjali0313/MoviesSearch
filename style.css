@@ -26,5 +26,27 @@ footer{
   justify-content: center;
   color: white;
 }
-.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-.movie-card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #f9f9f9; }
+.movie-grid {
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-top: 20px;
+}
+
+.movie-card {
+  background: white;
+  width:900px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+img{
+  width: 300px;
+}

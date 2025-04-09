@@ -1,5 +1,5 @@
 import { renderHeader, renderMain, renderFooter, renderMovies } from './model.js';
-import { fetchPopularMovies,searchMovies } from './view.js'
+import { PopularMovies,searchMovies } from './view.js'
 
 export const initApp = () => {
     const app = document.getElementById('app');
@@ -10,20 +10,16 @@ export const initApp = () => {
         ${renderFooter()}
     `;
 
-   fetchPopularMovies((data) => {
-        renderMovies(data.results);
-    });
-
-    const searchInput = document.querySelector('.search');
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
+const searchInput = document.querySelector('.search');
+    searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.trim();
         if (query.length > 2) {
             searchMovies(query, (data) => {
-                renderMovies(data.results);
+                renderMovies(Array.isArray(data) ? data : [data]);
             });
         } else {
-            fetchPopularMovies((data) => {
-                renderMovies(data.results);
+            PopularMovies((data) => {
+                renderMovies(Array.isArray(data) ? data : [data]);
             });
         }
     });
